@@ -1,0 +1,30 @@
+[project]
+name = "homework-14-1"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Evgeniy Vertianov",email = "vertianov.ev@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pytest (>=8.4.1,<9.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.lint.dependencies]
+flake8 = "^7.3.0"
+mypy = "^1.17.1"
+black = "^25.1.0"
+isort = "^6.0.1"
+
+[tool.black]
+line-length = 119
+exclude = ".git"
+
+[tool.isort]
+line_length = 119
