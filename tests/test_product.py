@@ -1,4 +1,3 @@
-
 def test_product_init(product):
     assert product.name == "Мандарин"
     assert product.description == "Сорт «Клементин»"

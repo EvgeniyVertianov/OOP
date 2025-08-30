@@ -1,5 +1,3 @@
-
-
 def test_category_init(first_category, second_category):
     # тестируем первую категорию
     assert first_category.name == "Овощи"
@@ -10,6 +8,4 @@ def test_category_init(first_category, second_category):
     assert second_category.name == "Фрукты"
     assert second_category.description == "Подходят для приготовления закусок и употребления в сыром виде"
     assert len(second_category.products) == 3
-    assert second_category .category_count == 2
-
-
+    assert second_category.category_count == 2
