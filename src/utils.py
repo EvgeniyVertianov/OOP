@@ -13,6 +13,7 @@ def read_json(path: str) -> list[dict]:
 
 
 def create_objects_from_json(data):
+    """ Функция создает объекты из json файла"""
     categories = []
     for category in data:
         products = []
