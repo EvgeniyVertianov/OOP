@@ -13,7 +13,7 @@ def read_json(path: str) -> list[dict]:
 
 
 def create_objects_from_json(data):
-    """ Функция создает объекты из json файла"""
+    """Функция создает объекты из json файла"""
     categories = []
     for category in data:
         products = []
@@ -22,11 +22,3 @@ def create_objects_from_json(data):
         category["products"] = products
         categories.append(Category(**category))
     return categories
-
-
-if __name__ == "__main__":
-    data_json = read_json("../data/products.json")
-    categories_data = create_objects_from_json(data_json)
-
-    print(categories_data[0].name)
-    print(categories_data[0].products)
