@@ -19,10 +19,9 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
-
     @classmethod
     def new_product(cls, product):
-            return cls(**product)
+        return cls(**product)
 
     @property
     def price(self):
@@ -33,7 +32,6 @@ class Product:
         if new_price <= 0:
             print("Цена не должна быть нулевая или отрицательная")
             return
-
 
 
 class Category:
