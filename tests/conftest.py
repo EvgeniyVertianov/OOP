@@ -28,3 +28,9 @@ def second_category():
 @pytest.fixture
 def product():
     return Product("Мандарин", "Сорт «Клементин»", 200, 400)
+
+
+@pytest.fixture
+def empty_category():
+    """Фикстура для создания пустой категории"""
+    return Category("Тестовая категория", "пустая категория", [])
