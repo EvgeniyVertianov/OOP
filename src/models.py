@@ -1,6 +1,3 @@
-from typing import Any
-
-
 class Product:
     """Класс предоставляет продукт"""
 
@@ -48,14 +45,14 @@ class Category:
     # количество товаров
     product_count: int = 0
 
-    def __init__(self, name: str, description: str, products: Any):
+    def __init__(self, name: str, description: str, products: list[Product]):
         self.name = name
         self.description = description
         self.__products = products if products is not None else []
         # вычисляем количество категорий
         Category.category_count += 1
         # вычисляем количество продуктов
-        Category.product_count = len(products)
+        Category.product_count += len(products)
 
     def add_product(self, product: Product):
         self.__products.append(product)
