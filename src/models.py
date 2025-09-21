@@ -9,7 +9,7 @@ class Product:
     # описание
     description: str
     # цена
-    price: float
+    # price: float - закомитил так как использую @property. Mypy ругается
     # количество в наличии
     quantity: int
 
@@ -42,7 +42,7 @@ class Category:
     # описание
     description: str
     # список товаров категории Product
-    products: list[Product]
+    # products: list[Product] - закомитил так как использую @property. Mypy ругается
     # количество категорий
     category_count: int = 0
     # количество товаров
@@ -67,3 +67,12 @@ class Category:
         for product in self.__products:
             products_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
         return products_str
+
+    @products.setter
+    def products(self, product: Product):
+        self.__products.append(product)
+        Category.product_count += 1
+
+    @property
+    def products_in_list(self):
+        return self.__products
