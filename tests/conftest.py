@@ -1,6 +1,7 @@
 import pytest
 
 from src.models import Category, Product
+from src.product_iterator import ProductIterator
 
 
 @pytest.fixture
@@ -34,3 +35,18 @@ def product():
 def empty_category():
     """Фикстура для создания пустой категории"""
     return Category("Тестовая категория", "пустая категория", [])
+
+
+@pytest.fixture
+def product_iterator(second_category):
+    return ProductIterator(second_category)
+
+
+@pytest.fixture
+def product_for_add1():
+    return Product("Банан", "Сорт «Кавендиш» ", 220, 300)
+
+
+@pytest.fixture
+def product_for_add2():
+    return Product("Мандарин", "Сорт «Клементин»", 200, 400)

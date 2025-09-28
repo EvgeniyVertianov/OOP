@@ -1,6 +1,3 @@
-from typing import Any
-
-
 class Product:
     """Класс предоставляет продукт"""
 
@@ -18,6 +15,13 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+
+    def __str__(self):
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other):
+        total = self.quantity * self.__price + other.quantity * other.price
+        return total
 
     @classmethod
     def new_product(cls, product):
@@ -48,14 +52,20 @@ class Category:
     # количество товаров
     product_count: int = 0
 
-    def __init__(self, name: str, description: str, products: Any):
+    def __init__(self, name: str, description: str, products: list[Product]):
         self.name = name
         self.description = description
         self.__products = products if products is not None else []
         # вычисляем количество категорий
         Category.category_count += 1
         # вычисляем количество продуктов
-        Category.product_count = len(products)
+        Category.product_count += len(products)
+
+    def __str__(self):
+        total_quantity = 0
+        for product in self.__products:
+            total_quantity += product.quantity
+        return f"{self.name}, количество продуктов: {total_quantity} шт."
 
     def add_product(self, product: Product):
         self.__products.append(product)
@@ -65,8 +75,12 @@ class Category:
     def products(self):
         products_str = ""
         for product in self.__products:
-            products_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
+            products_str += f"{str(product)}\n"
         return products_str
+
+    # @property
+    # def products(self):
+    #     return str(Product)
 
     @products.setter
     def products(self, product: Product):
