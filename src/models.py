@@ -16,6 +16,16 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+    def __str__(self):
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other):
+        if isinstance(other, Product):
+            total = self.quantity * self.__price + other.quantity * other.price
+            return total
+        else:
+            raise ValueError("Невозможно сложить объекты разных типов")
+
     @classmethod
     def new_product(cls, product):
         return cls(**product)
@@ -54,6 +64,12 @@ class Category:
         # вычисляем количество продуктов
         Category.product_count += len(products)
 
+    def __str__(self):
+        total_quantity = 0
+        for product in self.__products:
+            total_quantity += product.quantity
+        return f"{self.name}, количество продуктов: {total_quantity} шт."
+
     def add_product(self, product: Product):
         self.__products.append(product)
         Category.product_count += 1
@@ -62,8 +78,12 @@ class Category:
     def products(self):
         products_str = ""
         for product in self.__products:
-            products_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
+            products_str += f"{str(product)}\n"
         return products_str
+
+    # @property
+    # def products(self):
+    #     return str(Product)
 
     @products.setter
     def products(self, product: Product):
