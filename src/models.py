@@ -20,11 +20,8 @@ class Product:
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
-        if isinstance(other, Product):
-            total = self.quantity * self.__price + other.quantity * other.price
-            return total
-        else:
-            raise ValueError("Невозможно сложить объекты разных типов")
+        total = self.quantity * self.__price + other.quantity * other.price
+        return total
 
     @classmethod
     def new_product(cls, product):

@@ -46,3 +46,11 @@ def test_product_price_update(capsys, product):
     # реализуем положительный исход
     product.price = 200
     assert product.price == 200
+
+
+def test_product_str(product):
+    assert str(product) == "Мандарин, 200 руб. Остаток: 400 шт."
+
+
+def test_product_add(product_for_add1, product_for_add2):
+    assert product_for_add1 + product_for_add2 == 146000
