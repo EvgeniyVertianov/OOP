@@ -1,4 +1,5 @@
-from src.models import Category, Product
+from src.category import Category
+from src.product import Product
 from src.product_iterator import ProductIterator
 
 if __name__ == "__main__":
