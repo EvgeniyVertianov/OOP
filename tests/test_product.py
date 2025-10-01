@@ -1,4 +1,6 @@
-from src.models import Product
+import pytest
+
+from src.product import Product
 
 
 def test_product_init(product):
@@ -54,3 +56,8 @@ def test_product_str(product):
 
 def test_product_add(product_for_add1, product_for_add2):
     assert product_for_add1 + product_for_add2 == 146000
+
+
+def test_product_add_error(product_for_add1):
+    with pytest.raises(TypeError):
+        assert product_for_add1 + 1
