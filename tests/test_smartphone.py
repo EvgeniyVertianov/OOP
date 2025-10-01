@@ -16,6 +16,6 @@ def test_smartphone_add(smartphone_1, smartphone_2):
     assert smartphone_1 + smartphone_2 == 2580000
 
 
-def test_smartphone_add_error(smartphone_1, lawngrass_1):
+def test_smartphone_add_error(smartphone_1):
     with pytest.raises(TypeError):
-        assert smartphone_1 + lawngrass_1
+        assert smartphone_1 + 1

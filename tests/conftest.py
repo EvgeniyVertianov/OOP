@@ -8,6 +8,44 @@ from src.smartphone import Smartphone
 
 
 @pytest.fixture
+def json_file(tmp_path):
+    """
+    Фикстура Pytest, которая создает временный JSON-файл для каждого теста.
+    `tmp_path` - это встроенная фикстура Pytest, предоставляющая временную директорию.
+    """
+    file_path = tmp_path / "test.json"
+    return file_path
+
+
+@pytest.fixture
+def sample_data():
+    "Фикстура для проверки функции create_objects_from_json"
+    return [
+        {
+            "name": "Смартфоны",
+            "description": "Средство коммуникации и получение дополнительных функций для удобства жизни",
+            "products": [
+                {
+                    "name": "Samsung Galaxy C23 Ultra",
+                    "description": "256GB, Серый цвет, 200MP камера",
+                    "price": 180000.0,
+                    "quantity": 5,
+                },
+                {"name": "Iphone 15", "description": "512GB, Gray space", "price": 210000.0, "quantity": 8},
+                {"name": "Xiaomi Redmi Note 11", "description": "1024GB, Синий", "price": 31000.0, "quantity": 14},
+            ],
+        },
+        {
+            "name": "Телевизоры",
+            "description": "Современный телевизор",
+            "products": [
+                {"name": '55" QLED 4K', "description": "Фоновая подсветка", "price": 123000.0, "quantity": 7}
+            ],
+        },
+    ]
+
+
+@pytest.fixture
 def first_category():
     return Category(
         name="Овощи",

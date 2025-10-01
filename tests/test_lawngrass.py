@@ -15,6 +15,6 @@ def test_lawngrass_add(lawngrass_1, lawngrass_2):
     assert lawngrass_1 + lawngrass_2 == 16750
 
 
-def test_lawngrass_add_error(smartphone_1, lawngrass_1):
+def test_lawngrass_add_error(lawngrass_1):
     with pytest.raises(TypeError):
-        assert smartphone_1 + lawngrass_1
+        assert lawngrass_1 + 1
