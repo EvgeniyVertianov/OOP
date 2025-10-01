@@ -43,8 +43,11 @@ class Category:
 
     @products.setter
     def products(self, product: Product):
-        self.__products.append(product)
-        Category.product_count += 1
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category.product_count += 1
+        else:
+            raise TypeError
 
     @property
     def products_in_list(self):
