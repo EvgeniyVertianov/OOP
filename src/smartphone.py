@@ -31,7 +31,7 @@ class Smartphone(Product):
         self.color = color
 
     def __add__(self, other):
-        if type(other) is Smartphone:
+        if isinstance(other, Smartphone):
             total = self.quantity * self.price + other.quantity * other.price
             return total
         raise TypeError

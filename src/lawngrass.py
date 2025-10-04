@@ -27,7 +27,7 @@ class LawnGrass(Product):
         self.color = color
 
     def __add__(self, other):
-        if type(other) is LawnGrass:
+        if isinstance(other, LawnGrass):
             total = self.quantity * self.price + other.quantity * other.price
             return total
         raise TypeError
