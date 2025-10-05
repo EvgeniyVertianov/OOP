@@ -1,7 +1,8 @@
 from src.baseproduct import BaseProduct
+from src.print_mixin import PrintMixin
 
 
-class Product(BaseProduct):
+class Product(BaseProduct, PrintMixin):
     """Класс предоставляет продукт"""
 
     # название
@@ -18,6 +19,8 @@ class Product(BaseProduct):
         self.description = description
         self.__price = price
         self.quantity = quantity
+        # Необходимо указывать после инициализации всех атрибутов. В противном случае будет ошибка
+        super().__init__()
 
     def __str__(self):
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
@@ -38,7 +41,7 @@ class Product(BaseProduct):
         return self.__price
 
     @price.setter
-    def price(self, new_price: int):
+    def price(self, new_price: float):
         if new_price <= 0:
             print("Цена не должна быть нулевая или отрицательная")
             return
